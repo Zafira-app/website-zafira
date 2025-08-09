@@ -1,1 +1,106 @@
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zafira - Sua Assistente de Compras</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' );
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #E0E0E0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(63, 94, 251, 0.15) 0%, rgba(252, 70, 107, 0) 70%);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            background: rgba(29, 29, 29, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 600px;
+            margin: 1rem;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 1.5rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #B0B0B0;
+            margin-bottom: 2rem;
+        }
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #3f5efb, #fc466b);
+            color: #FFFFFF;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(63, 94, 251, 0.4);
+        }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Se você tiver o logo como um arquivo, podemos adicionar aqui. Por enquanto, vamos focar no texto. -->
+        <h1>Zafira</h1>
+        <p class="subtitle">Sua assistente de compras com inteligência artificial.</p>
+        <p>Estamos preparando algo incrível para você. A Zafira vai revolucionar a forma como você encontra os melhores produtos e ofertas na internet. Chega de perder tempo e dinheiro.</p>
+        <a href="#" class="cta-button">Em Breve no seu WhatsApp</a>
+        <footer>
+            &copy; 2025 Zafira. Todos os direitos reservados.
+        </footer>
+    </div>
+</body>
+</html>

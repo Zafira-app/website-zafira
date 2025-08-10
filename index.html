@@ -3,104 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zafira - Sua Assistente de Compras</title>
+    <title>Zafira - Sua Assistente de Compras Inteligente</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' );
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary-color: #4a69bd;
+            --secondary-color: #1e3799;
+            --background-color: #0f172a;
+            --card-background: #1e293b;
+            --text-color: #e2e8f0;
+            --heading-color: #ffffff;
+            --subtle-text-color: #94a3b8;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #121212;
-            color: #E0E0E0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            overflow: hidden;
-            position: relative;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
         }
-        body::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(63, 94, 251, 0.15) 0%, rgba(252, 70, 107, 0) 70%);
-            animation: rotate 20s linear infinite;
-        }
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+
         .container {
-            position: relative;
-            z-index: 1;
-            padding: 2rem;
-            background: rgba(29, 29, 29, 0.85);
-            border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            max-width: 600px;
-            margin: 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
-        .logo {
-            max-width: 150px;
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, var(--background-color) 100%), radial-gradient(ellipse at top, var(--secondary-color), var(--background-color) 70%);
+        }
+        .hero .logo {
+            max-width: 120px;
             margin-bottom: 1.5rem;
         }
-        h1 {
-            font-size: 2.5rem;
+        .hero h1 {
+            font-size: 3.5rem;
             font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 0.5rem;
+            color: var(--heading-color);
+            margin-bottom: 1rem;
         }
-        .subtitle {
-            font-size: 1.2rem;
+        .hero .subtitle {
+            font-size: 1.5rem;
             font-weight: 300;
-            color: #B0B0B0;
-            margin-bottom: 2rem;
-        }
-        p {
-            font-size: 1rem;
-            line-height: 1.6;
+            color: var(--subtle-text-color);
             margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .cta-button {
             display: inline-block;
-            background: linear-gradient(90deg, #3f5efb, #fc466b);
-            color: #FFFFFF;
-            padding: 15px 30px;
+            background: var(--primary-color);
+            color: var(--heading-color);
+            padding: 15px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(74, 105, 189, 0.4);
         }
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(63, 94, 251, 0.4);
+            box-shadow: 0 8px 30px rgba(74, 105, 189, 0.5);
         }
-        footer {
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: #888;
+
+        /* --- How It Works Section --- */
+        .section {
+            padding: 5rem 0;
+            text-align: center;
         }
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--heading-color);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        .steps-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .step {
+            background: var(--card-background);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 30%;
+            min-width: 280px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .step-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            background: rgba(74, 105, 189, 0.1);
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem auto;
+        }
+        .step h3 {
+            font-size: 1.5rem;
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Transparency Section --- */
+        .transparency {
+            background-color: var(--card-background);
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-top: 5rem;
+            max-width: 800px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--card-background);
+            margin-top: 4rem;
+        }
+        .footer p {
+            margin: 0;
+            color: var(--subtle-text-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .step { width: 80%; }
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Se você tiver o logo como um arquivo, podemos adicionar aqui. Por enquanto, vamos focar no texto. -->
-        <h1>Zafira</h1>
-        <p class="subtitle">Sua assistente de compras com inteligência artificial.</p>
-        <p>Estamos preparando algo incrível para você. A Zafira vai revolucionar a forma como você encontra os melhores produtos e ofertas na internet. Chega de perder tempo e dinheiro.</p>
-        <a href="#" class="cta-button">Em Breve no seu WhatsApp</a>
-        <footer>
-            &copy; 2025 Zafira. Todos os direitos reservados.
-        </footer>
-    </div>
+
+    <header class="hero">
+        <div class="container">
+            <!-- <img src="logo.png" alt="Zafira Logo" class="logo"> -->
+            <h1>Zafira</h1>
+            <p class="subtitle">Sua assistente de compras com inteligência artificial.</p>
+            <a href="#how-it-works" class="cta-button">Descubra Como</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="how-it-works" class="section">
+            <div class="container">
+                <h2 class="section-title">Como Funciona?</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Peça</h3>
+                        <p>Você diz à Zafira o que procura, como se estivesse conversando com um amigo.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Relaxe</h3>
+                        <p>Nossa IA pesquisa em dezenas de lojas, compara preços, analisa reviews e busca por cupons.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Compare e Compre</h3>
+                        <p>Com as melhores ofertas em mãos, compare os detalhes e compre com a confiança de que você fez a escolha certa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container transparency">
+                <h2 class="section-title">Por que é Grátis? O Nosso Ganha-Ganha</h2>
+                <p>Acreditamos em um modelo de negócio justo e transparente. A Zafira é parceira oficial das maiores lojas do Brasil. Quando você gosta de uma de nossas recomendações e compra através do link fornecido, a loja nos paga uma pequena comissão. <strong>Isso não altera em absolutamente nada o preço para você.</strong> É essa parceria que financia nossa tecnologia e nos permite continuar oferecendo o melhor serviço de busca, sempre de graça. Você faz a melhor compra, e nós somos recompensados por te ajudar. Simples assim.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Zafira. Todos os direitos reservados.</p>
+            <!-- Futuros links para Política de Privacidade, etc. -->
+        </div>
+    </footer>
+
 </body>
 </html>

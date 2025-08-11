@@ -244,7 +244,8 @@
     <main class="main-content container">
         <div class="contact-form-container">
             <h2>Envie sua mensagem</h2>
-            <form id="contact-form">
+            <form id="contact-form" name="contact" method="POST" data-netlify="true">
+               <input type="hidden" name="form-name" value="contact" />
                 <div class="form-group">
                     <label for="name">Seu Nome</label>
                     <input type="text" id="name" name="name" required>

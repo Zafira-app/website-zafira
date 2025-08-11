@@ -253,7 +253,7 @@
 </form>
 <!-- Fim do formulário escondido -->
 
-           <form id="contact-form" name="contact" method="POST" data-netlify="true">
+           <form name="contact" method="POST" data-netlify="true">
                <input type="hidden" name="form-name" value="contact" />
                 <div class="form-group">
                     <label for="name">Seu Nome</label>
@@ -303,27 +303,6 @@
         </div>
     </footer>
 
-    <script>
-        // Simulação de envio de formulário
-        const form = document.getElementById('contact-form' );
-        const formMessage = document.getElementById('form-message');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Impede o envio real do formulário
-
-            // Simula um envio bem-sucedido
-            formMessage.textContent = 'Obrigado! Sua mensagem foi enviada com sucesso.';
-            formMessage.className = 'success';
-
-            // Limpa o formulário
-            form.reset();
-
-            // Esconde a mensagem após 5 segundos
-            setTimeout(() => {
-                formMessage.style.display = 'none';
-            }, 5000);
-        });
-    </script>
 
 </body>
 </html>

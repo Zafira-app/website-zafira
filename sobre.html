@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Zafira</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' );
+        
+        :root {
+            --primary-color: #4a69bd;
+            --secondary-color: #1e3799;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-color: #495057;
+            --heading-color: #0f172a;
+            --subtle-text-color: #6c757d;
+            --border-color: #dee2e6;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Header --- */
+        .header {
+            background-color: var(--card-background);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .nav-menu a {
+            color: var(--heading-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Page Header --- */
+        .page-header {
+            background-color: var(--card-background);
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: var(--heading-color);
+            margin: 0;
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--subtle-text-color);
+            margin-top: 0.5rem;
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            padding: 4rem 0;
+        }
+        .content-section {
+            margin-bottom: 3rem;
+            background: var(--card-background);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+        .content-section h2 {
+            font-size: 2rem;
+            color: var(--heading-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-top: 0;
+        }
+        .content-section p {
+            font-size: 1.1rem;
+        }
+        .content-section strong {
+            color: var(--secondary-color);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--card-background);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+        .footer p {
+            margin: 0;
+            color: var(--subtle-text-color);
+        }
+        .footer-nav a {
+            color: var(--subtle-text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .footer-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Animation --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .page-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="container nav">
+            <a href="index.html" class="nav-logo">Zafira</a>
+            <div class="nav-menu">
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Nossa História</h1>
+            <p>Nascemos de uma frustração real para trazer simplicidade e confiança às suas compras.</p>
+        </div>
+    </div>
+
+    <main class="main-content container">
+        <section class="content-section fade-in-section">
+            <h2>A Faísca da Ideia</h2>
+            <p>A Zafira nasceu de uma experiência que todos nós conhecemos bem: a frustração de comprar online. Horas perdidas pulando de site em site, dezenas de abas abertas, a incerteza sobre a confiabilidade de um vendedor e, no final, a decepção de encontrar o produto perfeito, mas não no seu tamanho.</p>
+            <p><strong>"Tinha que haver um jeito melhor"</strong>, pensamos. Um jeito de usar a tecnologia não para criar mais confusão, mas para trazer clareza, confiança e, acima de tudo, devolver o seu tempo.</p>
+        </section>
+
+        <section class="content-section fade-in-section">
+            <h2>Nossa Missão</h2>
+            <p>Nossa missão é simples: <strong>transformar a maneira como você faz compras online.</strong> Queremos que cada compra seja uma experiência tranquila, inteligente e segura. A Zafira foi projetada para ser sua especialista pessoal, uma assistente que faz o trabalho pesado de pesquisa e análise para que você possa tomar decisões com a confiança de quem fez o melhor negócio possível.</p>
+        </section>
+
+        <section class="content-section fade-in-section">
+            <h2>Nossos Valores</h2>
+            <p><strong>Transparência Total:</strong> Explicamos abertamente como ganhamos dinheiro (através de comissões que não custam nada a mais para você) porque acreditamos que a confiança é a base de tudo.</p>
+            <p><strong>Foco no Usuário:</strong> Cada funcionalidade da Zafira é pensada para resolver um problema real seu. Se não te ajuda a economizar tempo, dinheiro ou a comprar com mais segurança, não entra no nosso sistema.</p>
+            <p><strong>Inovação Constante:</strong> O mundo do e-commerce muda a cada dia. Estamos comprometidos em evoluir nossa inteligência artificial constantemente para sempre te entregar os melhores resultados.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-nav">
+                <a href="index.html">Início</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="#">Privacidade</a>
+            </div>
+            <p style="margin-top: 1rem;">&copy; 2025 Zafira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => { observer.observe(section); });
+    </script>
+
+</body>
+</html>

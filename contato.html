@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Zafira</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' );
+        
+        :root {
+            --primary-color: #4a69bd;
+            --secondary-color: #1e3799;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-color: #495057;
+            --heading-color: #0f172a;
+            --subtle-text-color: #6c757d;
+            --border-color: #dee2e6;
+            --success-color: #28a745;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Header --- */
+        .header {
+            background-color: var(--card-background);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .nav-menu a {
+            color: var(--heading-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Page Header --- */
+        .page-header {
+            background-color: var(--card-background);
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: var(--heading-color);
+            margin: 0;
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--subtle-text-color);
+            margin-top: 0.5rem;
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            padding: 4rem 0;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .contact-form-container, .contact-info-container {
+            background: var(--card-background);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+        .contact-form-container {
+            flex: 2;
+            min-width: 300px;
+        }
+        .contact-info-container {
+            flex: 1;
+            min-width: 250px;
+        }
+        .contact-form-container h2, .contact-info-container h2 {
+            font-size: 2rem;
+            color: var(--heading-color);
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+        
+        /* --- Form --- */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--heading-color);
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 105, 189, 0.2);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-button {
+            display: inline-block;
+            width: 100%;
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .submit-button:hover {
+            background-color: var(--secondary-color);
+        }
+        #form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+        #form-message.success {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+            display: block;
+        }
+
+        /* --- Contact Info --- */
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-info svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--card-background);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+        .footer p {
+            margin: 0;
+            color: var(--subtle-text-color);
+        }
+        .footer-nav a {
+            color: var(--subtle-text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .footer-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .page-header h1 { font-size: 2.2rem; }
+            .main-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="container nav">
+            <a href="index.html" class="nav-logo">Zafira</a>
+            <div class="nav-menu">
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Fale Conosco</h1>
+            <p>Dúvidas, sugestões ou parcerias? Adoramos ouvir você.</p>
+        </div>
+    </div>
+
+    <main class="main-content container">
+        <div class="contact-form-container">
+            <h2>Envie sua mensagem</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Seu Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Seu E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Assunto</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Sua Mensagem</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Enviar Mensagem</button>
+            </form>
+            <div id="form-message"></div>
+        </div>
+
+        <div class="contact-info-container">
+            <h2>Informações</h2>
+            <div class="contact-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,4H4A2,2,0,0,0,2,6V18a2,2,0,0,0,2,2H20a2,2,0,0,0,2-2V6A2,2,0,0,0,20,4Zm0,4L12,13,4,8V6l8,5,8-5Z"/></svg>
+                    <span>contato@zafira.app.br</span>
+                </p>
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Zm1-8.5a1,1,0,0,0-2,0v4a1,1,0,0,0,2,0Zm-1-4a1,1,0,1,0-1-1A1,1,0,0,0,12,7.5Z"/></svg>
+                    <span>Para dúvidas sobre produtos ou compras, por favor, utilize nosso chatbot. O e-mail é para parcerias e questões institucionais.</span>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-nav">
+                <a href="index.html">Início</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="#">Privacidade</a>
+            </div>
+            <p style="margin-top: 1rem;">&copy; 2025 Zafira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simulação de envio de formulário
+        const form = document.getElementById('contact-form' );
+        const formMessage = document.getElementById('form-message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o envio real do formulário
+
+            // Simula um envio bem-sucedido
+            formMessage.textContent = 'Obrigado! Sua mensagem foi enviada com sucesso.';
+            formMessage.className = 'success';
+
+            // Limpa o formulário
+            form.reset();
+
+            // Esconde a mensagem após 5 segundos
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+
+</body>
+</html>

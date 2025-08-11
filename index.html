@@ -10,11 +10,16 @@
         :root {
             --primary-color: #4a69bd;
             --secondary-color: #1e3799;
-            --background-color: #0f172a;
-            --card-background: #1e293b;
-            --text-color: #e2e8f0;
-            --heading-color: #ffffff;
-            --subtle-text-color: #94a3b8;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-color: #495057;
+            --heading-color: #0f172a;
+            --subtle-text-color: #6c757d;
+            --border-color: #dee2e6;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
 
         body {
@@ -32,24 +37,51 @@
             padding: 0 1.5rem;
         }
 
+        /* --- Header --- */
+        .header {
+            background-color: var(--card-background);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .nav-menu a {
+            color: var(--heading-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
         /* --- Hero Section --- */
         .hero {
-            padding: 6rem 0;
+            padding: 5rem 0;
             text-align: center;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, var(--background-color) 100%), radial-gradient(ellipse at top, var(--secondary-color), var(--background-color) 70%);
-        }
-        .hero .logo {
-            max-width: 120px;
-            margin-bottom: 1.5rem;
+            background-color: var(--card-background);
         }
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 700;
             color: var(--heading-color);
             margin-bottom: 1rem;
         }
         .hero .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 300;
             color: var(--subtle-text-color);
             margin-bottom: 2.5rem;
@@ -60,21 +92,21 @@
         .cta-button {
             display: inline-block;
             background: var(--primary-color);
-            color: var(--heading-color);
+            color: #ffffff;
             padding: 15px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 20px rgba(74, 105, 189, 0.4);
+            box-shadow: 0 4px 20px rgba(74, 105, 189, 0.3);
         }
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(74, 105, 189, 0.5);
+            box-shadow: 0 8px 30px rgba(74, 105, 189, 0.4);
         }
 
-        /* --- How It Works Section --- */
+        /* --- General Section Styling --- */
         .section {
             padding: 5rem 0;
             text-align: center;
@@ -97,6 +129,8 @@
             background-color: var(--primary-color);
             border-radius: 2px;
         }
+
+        /* --- How It Works Section --- */
         .steps-container {
             display: flex;
             justify-content: space-around;
@@ -105,12 +139,17 @@
         }
         .step {
             background: var(--card-background);
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 15px;
             width: 30%;
             min-width: 280px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
         }
         .step-number {
             font-size: 1.5rem;
@@ -132,6 +171,7 @@
         /* --- Transparency Section --- */
         .transparency {
             background-color: var(--card-background);
+            border: 1px solid var(--border-color);
             padding: 4rem 2rem;
             border-radius: 15px;
             margin-top: 5rem;
@@ -140,37 +180,69 @@
 
         /* --- Footer --- */
         .footer {
+            background-color: var(--card-background);
             padding: 3rem 0;
             text-align: center;
-            border-top: 1px solid var(--card-background);
+            border-top: 1px solid var(--border-color);
             margin-top: 4rem;
         }
         .footer p {
             margin: 0;
             color: var(--subtle-text-color);
         }
+        .footer-nav a {
+            color: var(--subtle-text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .footer-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Animation --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero .subtitle { font-size: 1.2rem; }
-            .step { width: 80%; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .step { width: 90%; }
+            .nav-menu { display: none; } /* Simple responsive menu for now */
         }
 
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="container">
-            <!-- <img src="logo.png" alt="Zafira Logo" class="logo"> -->
-            <h1>Zafira</h1>
-            <p class="subtitle">Sua assistente de compras com inteligência artificial.</p>
-            <a href="#how-it-works" class="cta-button">Descubra Como</a>
-        </div>
+    <header class="header">
+        <nav class="container nav">
+            <a href="#" class="nav-logo">Zafira</a>
+            <div class="nav-menu">
+                <!-- Links serão adicionados quando as páginas existirem -->
+                <a href="#">Sobre</a>
+                <a href="#">Contato</a>
+            </div>
+        </nav>
     </header>
 
     <main>
-        <section id="how-it-works" class="section">
+        <section class="hero">
+            <div class="container">
+                <h1>Sua assistente de compras inteligente.</h1>
+                <p class="subtitle">Chega de pular de site em site. A Zafira pesquisa os melhores produtos, compara preços, analisa reviews e encontra cupons para você. Tudo de graça.</p>
+                <a href="#how-it-works" class="cta-button">Descubra Como Funciona</a>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="section fade-in-section">
             <div class="container">
                 <h2 class="section-title">Como Funciona?</h2>
                 <div class="steps-container">
@@ -193,7 +265,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section fade-in-section">
             <div class="container transparency">
                 <h2 class="section-title">Por que é Grátis? O Nosso Ganha-Ganha</h2>
                 <p>Acreditamos em um modelo de negócio justo e transparente. A Zafira é parceira oficial das maiores lojas do Brasil. Quando você gosta de uma de nossas recomendações e compra através do link fornecido, a loja nos paga uma pequena comissão. <strong>Isso não altera em absolutamente nada o preço para você.</strong> É essa parceria que financia nossa tecnologia e nos permite continuar oferecendo o melhor serviço de busca, sempre de graça. Você faz a melhor compra, e nós somos recompensados por te ajudar. Simples assim.</p>
@@ -203,10 +275,35 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Zafira. Todos os direitos reservados.</p>
-            <!-- Futuros links para Política de Privacidade, etc. -->
+            <div class="footer-nav">
+                <!-- Links serão adicionados quando as páginas existirem -->
+                <a href="#">Início</a>
+                <a href="#">Sobre</a>
+                <a href="#">Contato</a>
+                <a href="#">Privacidade</a>
+            </div>
+            <p style="margin-top: 1rem;">&copy; 2025 Zafira. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        // Script para a animação de fade-in ao rolar
+        const sections = document.querySelectorAll('.fade-in-section');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 
 </body>
 </html>

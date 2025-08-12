@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Enviada | Zafira</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' );
+        
+        :root {
+            --primary-color: #4a69bd;
+            --secondary-color: #1e3799;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-color: #495057;
+            --heading-color: #0f172a;
+            --subtle-text-color: #6c757d;
+            --border-color: #dee2e6;
+            --success-color: #28a745;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            background-color: var(--card-background);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .nav-menu { display: flex; }
+        .nav-menu a {
+            color: var(--heading-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-menu a:hover { color: var(--primary-color); }
+        
+        .nav-toggle { display: none; }
+
+        /* --- Success Message Section --- */
+        .success-container {
+            text-align: center;
+            padding: 5rem 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .success-box {
+            background-color: var(--card-background);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            max-width: 600px;
+        }
+        .success-box svg {
+            width: 80px;
+            height: 80px;
+            fill: var(--success-color);
+            margin-bottom: 1.5rem;
+        }
+        .success-box h1 {
+            font-size: 2.5rem;
+            color: var(--heading-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .success-box p {
+            font-size: 1.2rem;
+            color: var(--subtle-text-color);
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--card-background);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer p { margin: 0; color: var(--subtle-text-color); }
+        .footer-nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .footer-nav a:hover { color: var(--secondary-color); }
+
+        /* --- Responsive (Mobile) Styles --- */
+        @media (max-width: 768px) {
+            .success-box h1 { font-size: 2rem; }
+            
+            .nav-toggle {
+                display: block;
+                cursor: pointer;
+                z-index: 1001;
+            }
+            .nav-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px;
+                background: var(--heading-color);
+                transition: all 0.3s ease-in-out;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--card-background);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            .nav-menu.active { right: 0; }
+            .nav-menu a { margin: 1.5rem 0; font-size: 1.2rem; }
+
+            .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .nav-toggle.active span:nth-child(2) { opacity: 0; }
+            .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="container nav">
+            <a href="index.html" class="nav-logo">Zafira</a>
+            <div class="nav-menu">
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="privacidade.html">Privacidade</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="success-container">
+        <div class="success-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm5.71,8.71L11,17.41a1,1,0,0,1-1.42,0L6.29,14.12a1,1,0,0,1,1.42-1.42L11,14.59l5.29-5.3a1,1,0,0,1,1.42,1.42Z"/></svg>
+            <h1>Obrigado!</h1>
+            <p>Sua mensagem foi recebida com sucesso. Responderemos em breve, se necessário.</p>
+            <a href="index.html" class="cta-button">Voltar ao Início</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-nav">
+                <a href="index.html">Início</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="privacidade.html">Privacidade</a>
+            </div>
+            <p style="margin-top: 1rem;">&copy; 2025 Zafira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Script
+        const navToggle = document.querySelector('.nav-toggle' );
+        const navMenu = document.querySelector('.nav-menu');
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

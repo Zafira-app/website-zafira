@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Privacidade | Zafira</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' );
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' );
         
         :root {
             --primary-color: #4a69bd;
@@ -26,7 +26,7 @@
             padding: 0;
             background-color: var(--background-color);
             color: var(--text-color);
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
         .container {
@@ -35,6 +35,7 @@
             padding: 0 1.5rem;
         }
 
+        /* --- Header & Navigation --- */
         .header {
             background-color: var(--card-background);
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -47,7 +48,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1100px;
+            max-width: 1100px; /* Wider container for nav */
             margin: 0 auto;
             padding: 0 1.5rem;
         }
@@ -57,15 +58,19 @@
             color: var(--primary-color);
             text-decoration: none;
         }
+        .nav-menu { display: flex; }
         .nav-menu a {
             color: var(--heading-color);
             text-decoration: none;
-            margin-left: 1.5rem;
+            margin-left: 2rem;
             font-weight: 500;
             transition: color 0.3s ease;
         }
         .nav-menu a:hover { color: var(--primary-color); }
+        
+        .nav-toggle { display: none; }
 
+        /* --- Page Header --- */
         .page-header {
             background-color: var(--card-background);
             padding: 4rem 0;
@@ -77,25 +82,35 @@
             color: var(--heading-color);
             margin: 0;
         }
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--subtle-text-color);
+            margin-top: 0.5rem;
+        }
 
+        /* --- Main Content --- */
         .main-content { padding: 4rem 0; }
         .content-section {
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             background: var(--card-background);
             padding: 2.5rem;
             border-radius: 12px;
             border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
         }
         .content-section h2 {
             font-size: 1.8rem;
             color: var(--heading-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
             margin-top: 0;
         }
-        .content-section p, .content-section li { font-size: 1.05rem; }
-        .content-section ul { padding-left: 20px; }
-        .content-section a { color: var(--primary-color); text-decoration: none; }
-        .content-section a:hover { text-decoration: underline; }
+        .content-section p, .content-section ul { font-size: 1.1rem; }
+        .content-section li { margin-bottom: 0.5rem; }
+        .content-section strong { color: var(--secondary-color); }
 
+        /* --- Footer --- */
         .footer {
             background-color: var(--card-background);
             padding: 3rem 0;
@@ -105,16 +120,51 @@
         }
         .footer p { margin: 0; color: var(--subtle-text-color); }
         .footer-nav a {
-            color: var(--subtle-text-color);
+            color: var(--primary-color);
             text-decoration: none;
             margin: 0 1rem;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
-        .footer-nav a:hover { color: var(--primary-color); }
+        .footer-nav a:hover { color: var(--secondary-color); }
 
+        /* --- Responsive (Mobile) Styles --- */
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
             .page-header h1 { font-size: 2.2rem; }
+            
+            .nav-toggle {
+                display: block;
+                cursor: pointer;
+                z-index: 1001;
+            }
+            .nav-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px;
+                background: var(--heading-color);
+                transition: all 0.3s ease-in-out;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--card-background);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            .nav-menu.active { right: 0; }
+            .nav-menu a { margin: 1.5rem 0; font-size: 1.2rem; }
+
+            .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .nav-toggle.active span:nth-child(2) { opacity: 0; }
+            .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
         }
     </style>
 </head>
@@ -126,6 +176,12 @@
             <div class="nav-menu">
                 <a href="sobre.html">Sobre</a>
                 <a href="contato.html">Contato</a>
+                <a href="privacidade.html">Privacidade</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </nav>
     </header>
@@ -133,51 +189,36 @@
     <div class="page-header">
         <div class="container">
             <h1>Política de Privacidade</h1>
+            <p>Sua confiança é nossa prioridade. Entenda como cuidamos dos seus dados.</p>
         </div>
     </div>
 
     <main class="main-content container">
-        <div class="content-section">
-            <p><strong>Última atualização:</strong> 11 de Agosto de 2025</p>
-            <p>A sua privacidade é importante para nós. É política da Zafira respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <a href="https://zafira.app.br">zafira.app.br</a>, e outros sites que possuímos e operamos.</p>
-        </div>
-
-        <div class="content-section">
+        <section class="content-section">
             <h2>1. Coleta de Informações</h2>
-            <p>Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.</p>
-            <p>Atualmente, a Zafira não solicita nem armazena informações de identificação pessoal como nome, e-mail ou telefone para o uso de sua funcionalidade principal de busca.</p>
-        </div>
+            <p>Coletamos informações de duas formas: as que você nos fornece diretamente através do nosso formulário de contato (nome, e-mail, mensagem) e as informações anônimas de navegação (como páginas visitadas), que nos ajudam a melhorar nosso site.</p>
+        </section>
 
-        <div class="content-section">
-            <h2>2. Links de Afiliados</h2>
-            <p>A Zafira é um serviço de assistente de compras que utiliza links de afiliados para monetização. Isso significa que, quando você clica em um link de produto recomendado por nós e realiza uma compra, podemos receber uma pequena comissão da loja parceira. Este modelo de negócio financia nossa tecnologia e nos permite oferecer o serviço gratuitamente para você.</p>
-            <ul>
-                <li>A utilização de links de afiliados não altera o preço final do produto para você.</li>
-                <li>Nossas recomendações são baseadas em nossa análise de dados e visam encontrar a melhor oferta, independentemente da comissão.</li>
-                <li>Ao clicar em um link de afiliado, um cookie pode ser armazenado em seu navegador para rastrear a origem da venda. Este cookie é gerenciado pela rede de afiliados (ex: AWIN ) e não contém informações pessoais suas.</li>
-            </ul>
-        </div>
+        <section class="content-section">
+            <h2>2. Uso das Informações</h2>
+            <p>As informações que você nos fornece são usadas exclusivamente para responder às suas solicitações. Não compartilhamos, vendemos ou alugamos suas informações pessoais para terceiros. Os dados anônimos de navegação são usados apenas para análises internas de performance do site.</p>
+        </section>
 
-        <div class="content-section">
-            <h2>3. Cookies</h2>
-            <p>Como é prática comum em quase todos os sites profissionais, este site usa cookies, que são pequenos arquivos baixados no seu computador, para melhorar sua experiência. Esta página descreve quais informações eles coletam, como as usamos e por que às vezes precisamos armazenar esses cookies. Também compartilharemos como você pode impedir que esses cookies sejam armazenados, no entanto, isso pode fazer o downgrade ou 'quebrar' certos elementos da funcionalidade do site.</p>
-        </div>
+        <section class="content-section">
+            <h2>3. Links de Afiliados</h2>
+            <p>A Zafira utiliza links de afiliados. Isso significa que, quando recomendamos um produto e você realiza uma compra através do nosso link, recebemos uma pequena comissão da loja. <strong>Isso não gera nenhum custo adicional para você.</strong> Esta é a forma como nosso serviço se mantém gratuito. Ao clicar em um link de afiliado, você será redirecionado para o site da loja parceira, que possui sua própria política de privacidade.</p>
+        </section>
 
-        <div class="content-section">
-            <h2>4. Links para Sites de Terceiros</h2>
-            <p>O nosso site pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.</p>
-        </div>
+        <section class="content-section">
+            <h2>4. Segurança</h2>
+            <p>Empregamos medidas de segurança para proteger suas informações. Nosso site utiliza o protocolo HTTPS para garantir que a comunicação entre seu navegador e nossos servidores seja criptografada.</p>
+        </section>
 
-        <div class="content-section">
-            <h2>5. Compromisso do Usuário</h2>
-            <p>O usuário se compromete a fazer uso adequado dos conteúdos e da informação que a Zafira oferece no site e com caráter enunciativo, mas não limitativo: não se envolver em atividades que sejam ilegais ou contrárias à boa fé e à ordem pública; e não difundir propaganda ou conteúdo de natureza racista, xenofóbica, ou qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou contra os direitos humanos.</p>
-        </div>
-
-        <div class="content-section">
-            <h2>6. Mais Informações</h2>
-            <p>Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.</p>
-            <p>Esta política é efetiva a partir de Agosto de 2025.</p>
-        </div>
+        <section class="content-section">
+            <h2>5. Alterações na Política</h2>
+            <p>Podemos atualizar esta política de privacidade periodicamente. Recomendamos que você revise esta página de tempos em tempos para se manter informado. A data da última atualização estará sempre visível no final desta página.</p>
+            <p><em>Última atualização: 12 de agosto de 2025</em></p>
+        </section>
     </main>
 
     <footer class="footer">
@@ -191,6 +232,16 @@
             <p style="margin-top: 1rem;">&copy; 2025 Zafira. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Script
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>

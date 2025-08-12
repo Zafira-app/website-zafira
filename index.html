@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zafira, sua assistente de compras inteligente</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' );
         
         :root {
             --primary-color: #4a69bd;
@@ -18,9 +18,7 @@
             --border-color: #dee2e6;
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -37,7 +35,7 @@
             padding: 0 1.5rem;
         }
 
-        /* --- Header --- */
+        /* --- Header & Navigation --- */
         .header {
             background-color: var(--card-background);
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -57,16 +55,17 @@
             color: var(--primary-color);
             text-decoration: none;
         }
+        .nav-menu { display: flex; }
         .nav-menu a {
             color: var(--heading-color);
             text-decoration: none;
-            margin-left: 1.5rem;
+            margin-left: 2rem;
             font-weight: 500;
             transition: color 0.3s ease;
         }
-        .nav-menu a:hover {
-            color: var(--primary-color);
-        }
+        .nav-menu a:hover { color: var(--primary-color); }
+        
+        .nav-toggle { display: none; } /* Hamburger Menu */
 
         /* --- Hero Section --- */
         .hero {
@@ -75,10 +74,10 @@
             background-color: var(--card-background);
         }
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3.8rem;
             font-weight: 700;
             color: var(--heading-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         .hero .subtitle {
             font-size: 1.3rem;
@@ -88,6 +87,12 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+        }
+        .hero .tagline {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-top: 0;
+            margin-bottom: 2rem;
         }
         .cta-button {
             display: inline-block;
@@ -107,10 +112,7 @@
         }
 
         /* --- General Section Styling --- */
-        .section {
-            padding: 5rem 0;
-            text-align: center;
-        }
+        .section { padding: 5rem 0; text-align: center; }
         .section-title {
             font-size: 2.5rem;
             color: var(--heading-color);
@@ -186,19 +188,15 @@
             border-top: 1px solid var(--border-color);
             margin-top: 4rem;
         }
-        .footer p {
-            margin: 0;
-            color: var(--subtle-text-color);
-        }
+        .footer p { margin: 0; color: var(--subtle-text-color); }
         .footer-nav a {
-            color: var(--subtle-text-color);
+            color: var(--primary-color);
             text-decoration: none;
             margin: 0 1rem;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
-        .footer-nav a:hover {
-            color: var(--primary-color);
-        }
+        .footer-nav a:hover { color: var(--secondary-color); }
 
         /* --- Animation --- */
         .fade-in-section {
@@ -211,46 +209,76 @@
             transform: translateY(0);
         }
 
+        /* --- Responsive (Mobile) Styles --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero .tagline { font-size: 1.5rem; }
             .hero .subtitle { font-size: 1.1rem; }
             .step { width: 90%; }
-            .nav-menu { display: none; } /* Simple responsive menu for now */
-        }
+            
+            .nav-toggle {
+                display: block;
+                cursor: pointer;
+                z-index: 1001;
+            }
+            .nav-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px;
+                background: var(--heading-color);
+                transition: all 0.3s ease-in-out;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--card-background);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            .nav-menu.active { right: 0; }
+            .nav-menu a { margin: 1.5rem 0; font-size: 1.2rem; }
 
+            .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .nav-toggle.active span:nth-child(2) { opacity: 0; }
+            .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        }
     </style>
 </head>
 <body>
 
     <header class="header">
         <nav class="container nav">
-            <a href="#" class="nav-logo">Zafira</a>
+            <a href="index.html" class="nav-logo">Zafira</a>
             <div class="nav-menu">
-    <a href="sobre.html">Sobre</a>
-    <a href="contato.html">Contato</a>
-</div>
-
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="privacidade.html">Privacidade</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
     <main>
- <section class="hero">
-    <div class="container">
-        <!-- Título Principal -->
-        <h1 style="font-size: 3.8rem; margin-bottom: 0.5rem;">Zafira</h1>
-        
-        <!-- Subtítulo / Frase de Efeito -->
-        <p class="subtitle" style="font-size: 1.8rem; font-weight: 300; margin-top: 0; margin-bottom: 2.5rem;">Sua assistente de compras inteligente.</p>
-        
-        <!-- Parágrafo de Apoio -->
-        <p class="subtitle">Chega de pular de site em site. A Zafira pesquisa os melhores produtos, compara preços, analisa reviews e encontra cupons para você. Tudo de graça.</p>
-        
-        <!-- Botão de Ação -->
-        <a href="#how-it-works" class="cta-button">Descubra Como Funciona</a>
-    </div>
-</section>
-
-
+        <section class="hero">
+            <div class="container">
+                <h1>Zafira</h1>
+                <p class="subtitle tagline">Sua assistente de compras inteligente.</p>
+                <p class="subtitle">Chega de pular de site em site. A Zafira pesquisa os melhores produtos, compara preços, analisa reviews e encontra cupons para você. Tudo de graça.</p>
+                <a href="#how-it-works" class="cta-button">Descubra Como Funciona</a>
+            </div>
+        </section>
 
         <section id="how-it-works" class="section fade-in-section">
             <div class="container">
@@ -285,33 +313,34 @@
 
     <footer class="footer">
         <div class="container">
-           <div class="footer-nav">
-    <a href="index.html">Início</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="contato.html">Contato</a>
-    <a href="privacidade.html">Privacidade</a>
-</div>
-
+            <div class="footer-nav">
+                <a href="index.html">Início</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="privacidade.html">Privacidade</a>
+            </div>
             <p style="margin-top: 1rem;">&copy; 2025 Zafira. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
-        // Script para a animação de fade-in ao rolar
+        // Animation Script
         const sections = document.querySelectorAll('.fade-in-section');
-
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
+        sections.forEach(section => { observer.observe(section); });
 
-        sections.forEach(section => {
-            observer.observe(section);
+        // Mobile Menu Script
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
         });
     </script>
 

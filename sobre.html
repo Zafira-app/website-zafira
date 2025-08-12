@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nós | Zafira</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' );
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' );
         
         :root {
             --primary-color: #4a69bd;
@@ -18,9 +18,7 @@
             --border-color: #dee2e6;
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -37,7 +35,7 @@
             padding: 0 1.5rem;
         }
 
-        /* --- Header --- */
+        /* --- Header & Navigation --- */
         .header {
             background-color: var(--card-background);
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -50,7 +48,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1100px;
+            max-width: 1100px; /* Wider container for nav */
             margin: 0 auto;
             padding: 0 1.5rem;
         }
@@ -60,16 +58,17 @@
             color: var(--primary-color);
             text-decoration: none;
         }
+        .nav-menu { display: flex; }
         .nav-menu a {
             color: var(--heading-color);
             text-decoration: none;
-            margin-left: 1.5rem;
+            margin-left: 2rem;
             font-weight: 500;
             transition: color 0.3s ease;
         }
-        .nav-menu a:hover {
-            color: var(--primary-color);
-        }
+        .nav-menu a:hover { color: var(--primary-color); }
+        
+        .nav-toggle { display: none; }
 
         /* --- Page Header --- */
         .page-header {
@@ -90,9 +89,7 @@
         }
 
         /* --- Main Content --- */
-        .main-content {
-            padding: 4rem 0;
-        }
+        .main-content { padding: 4rem 0; }
         .content-section {
             margin-bottom: 3rem;
             background: var(--card-background);
@@ -109,12 +106,8 @@
             display: inline-block;
             margin-top: 0;
         }
-        .content-section p {
-            font-size: 1.1rem;
-        }
-        .content-section strong {
-            color: var(--secondary-color);
-        }
+        .content-section p { font-size: 1.1rem; }
+        .content-section strong { color: var(--secondary-color); }
 
         /* --- Footer --- */
         .footer {
@@ -124,19 +117,15 @@
             border-top: 1px solid var(--border-color);
             margin-top: 4rem;
         }
-        .footer p {
-            margin: 0;
-            color: var(--subtle-text-color);
-        }
+        .footer p { margin: 0; color: var(--subtle-text-color); }
         .footer-nav a {
-            color: var(--subtle-text-color);
+            color: var(--primary-color);
             text-decoration: none;
             margin: 0 1rem;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
-        .footer-nav a:hover {
-            color: var(--primary-color);
-        }
+        .footer-nav a:hover { color: var(--secondary-color); }
 
         /* --- Animation --- */
         .fade-in-section {
@@ -149,9 +138,43 @@
             transform: translateY(0);
         }
 
+        /* --- Responsive (Mobile) Styles --- */
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
             .page-header h1 { font-size: 2.2rem; }
+            
+            .nav-toggle {
+                display: block;
+                cursor: pointer;
+                z-index: 1001;
+            }
+            .nav-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px;
+                background: var(--heading-color);
+                transition: all 0.3s ease-in-out;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--card-background);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            .nav-menu.active { right: 0; }
+            .nav-menu a { margin: 1.5rem 0; font-size: 1.2rem; }
+
+            .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .nav-toggle.active span:nth-child(2) { opacity: 0; }
+            .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
         }
     </style>
 </head>
@@ -163,6 +186,12 @@
             <div class="nav-menu">
                 <a href="sobre.html">Sobre</a>
                 <a href="contato.html">Contato</a>
+                <a href="privacidade.html">Privacidade</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </nav>
     </header>
@@ -207,6 +236,7 @@
     </footer>
 
     <script>
+        // Animation Script
         const sections = document.querySelectorAll('.fade-in-section');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -216,6 +246,14 @@
             });
         }, { threshold: 0.1 });
         sections.forEach(section => { observer.observe(section); });
+
+        // Mobile Menu Script
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
     </script>
 
 </body>

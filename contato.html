@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato | Zafira</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' );
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap' );
         
         :root {
             --primary-color: #4a69bd;
@@ -16,12 +16,9 @@
             --heading-color: #0f172a;
             --subtle-text-color: #6c757d;
             --border-color: #dee2e6;
-            --success-color: #28a745;
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -38,7 +35,7 @@
             padding: 0 1.5rem;
         }
 
-        /* --- Header --- */
+        /* --- Header & Navigation --- */
         .header {
             background-color: var(--card-background);
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -51,7 +48,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1100px;
+            max-width: 1100px; /* Wider container for nav */
             margin: 0 auto;
             padding: 0 1.5rem;
         }
@@ -61,16 +58,17 @@
             color: var(--primary-color);
             text-decoration: none;
         }
+        .nav-menu { display: flex; }
         .nav-menu a {
             color: var(--heading-color);
             text-decoration: none;
-            margin-left: 1.5rem;
+            margin-left: 2rem;
             font-weight: 500;
             transition: color 0.3s ease;
         }
-        .nav-menu a:hover {
-            color: var(--primary-color);
-        }
+        .nav-menu a:hover { color: var(--primary-color); }
+        
+        .nav-toggle { display: none; }
 
         /* --- Page Header --- */
         .page-header {
@@ -104,14 +102,8 @@
             border: 1px solid var(--border-color);
             box-shadow: 0 8px 25px rgba(0,0,0,0.05);
         }
-        .contact-form-container {
-            flex: 2;
-            min-width: 300px;
-        }
-        .contact-info-container {
-            flex: 1;
-            min-width: 250px;
-        }
+        .contact-form-container { flex: 2; min-width: 300px; }
+        .contact-info-container { flex: 1; min-width: 250px; }
         .contact-form-container h2, .contact-info-container h2 {
             font-size: 2rem;
             color: var(--heading-color);
@@ -120,9 +112,7 @@
         }
         
         /* --- Form --- */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+        .form-group { margin-bottom: 1.5rem; }
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
@@ -143,10 +133,7 @@
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(74, 105, 189, 0.2);
         }
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
+        textarea { resize: vertical; min-height: 120px; }
         .submit-button {
             display: inline-block;
             width: 100%;
@@ -161,22 +148,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        .submit-button:hover {
-            background-color: var(--secondary-color);
-        }
-        #form-message {
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            display: none;
-        }
-        #form-message.success {
-            background-color: rgba(40, 167, 69, 0.1);
-            color: var(--success-color);
-            border: 1px solid var(--success-color);
-            display: block;
-        }
+        .submit-button:hover { background-color: var(--secondary-color); }
 
         /* --- Contact Info --- */
         .contact-info p {
@@ -201,24 +173,54 @@
             border-top: 1px solid var(--border-color);
             margin-top: 4rem;
         }
-        .footer p {
-            margin: 0;
-            color: var(--subtle-text-color);
-        }
+        .footer p { margin: 0; color: var(--subtle-text-color); }
         .footer-nav a {
-            color: var(--subtle-text-color);
+            color: var(--primary-color);
             text-decoration: none;
             margin: 0 1rem;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
-        .footer-nav a:hover {
-            color: var(--primary-color);
-        }
+        .footer-nav a:hover { color: var(--secondary-color); }
 
+        /* --- Responsive (Mobile) Styles --- */
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .page-header h1 { font-size: 2.2rem; }
             .main-content { flex-direction: column; }
+            .page-header h1 { font-size: 2.2rem; }
+            
+            .nav-toggle {
+                display: block;
+                cursor: pointer;
+                z-index: 1001;
+            }
+            .nav-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px;
+                background: var(--heading-color);
+                transition: all 0.3s ease-in-out;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--card-background);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            .nav-menu.active { right: 0; }
+            .nav-menu a { margin: 1.5rem 0; font-size: 1.2rem; }
+
+            .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .nav-toggle.active span:nth-child(2) { opacity: 0; }
+            .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
         }
     </style>
 </head>
@@ -230,6 +232,12 @@
             <div class="nav-menu">
                 <a href="sobre.html">Sobre</a>
                 <a href="contato.html">Contato</a>
+                <a href="privacidade.html">Privacidade</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </nav>
     </header>
@@ -244,17 +252,17 @@
     <main class="main-content container">
         <div class="contact-form-container">
             <h2>Envie sua mensagem</h2>
-           <!-- Formulário escondido para detecção da Netlify -->
-<form name="contact" netlify netlify-honeypot="bot-field" hidden>
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <input type="text" name="subject" />
-  <textarea name="message"></textarea>
-</form>
-<!-- Fim do formulário escondido -->
+            
+            <!-- Formulário escondido para detecção da Netlify -->
+            <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+              <input type="text" name="name" />
+              <input type="email" name="email" />
+              <input type="text" name="subject" />
+              <textarea name="message"></textarea>
+            </form>
+            <!-- Fim do formulário escondido -->
 
-           <form name="contact" method="POST" data-netlify="true">
-               <input type="hidden" name="form-name" value="contact" />
+            <form name="contact" method="POST" data-netlify="true">
                 <div class="form-group">
                     <label for="name">Seu Nome</label>
                     <input type="text" id="name" name="name" required>
@@ -273,7 +281,6 @@
                 </div>
                 <button type="submit" class="submit-button">Enviar Mensagem</button>
             </form>
-            <div id="form-message"></div>
         </div>
 
         <div class="contact-info-container">
@@ -303,6 +310,15 @@
         </div>
     </footer>
 
+    <script>
+        // Mobile Menu Script
+        const navToggle = document.querySelector('.nav-toggle' );
+        const navMenu = document.querySelector('.nav-menu');
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
